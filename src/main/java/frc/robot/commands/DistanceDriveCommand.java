@@ -21,132 +21,132 @@ import edu.wpi.first.wpilibj2.command.Command;
 
 /** A dead reckoning taxi command that uses the drivetrain subsystem. */
 public class DistanceDriveCommand extends Command {
-  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private final Drivetrain m_drivetrain;
-  private double m_targetDistance;
-  private double m_targetVelocity;
-  private SparkPIDController m_leftPIDController;
-  private SparkPIDController m_rightPIDController;
+    @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
+    private final Drivetrain m_drivetrain;
+    private double m_targetDistance;
+    private double m_targetVelocity;
+    private SparkPIDController m_leftPIDController;
+    private SparkPIDController m_rightPIDController;
 
-  private Timer m_timer;
+    private Timer m_timer;
 
-  /** 
-   * A dead reckoning drive command.
-   * Takes in target distance in meters and drives straight that amount.
-   * Uses default target velocity of ??? m/s. 
-   */ 
-  public DistanceDriveCommand(Drivetrain drivetrain, double targetDistance) {
-    m_drivetrain = drivetrain;
-    m_targetDistance = targetDistance * DrivetrainConstants.METERS_TO_ROTATIONS; // convert meters to motor rotations
-    // System.out.println("Target meters: " + targetDistance + ", target rotations: " + m_targetDistance);
-    m_targetVelocity = AutoConstants.DEFAULT_TARGET_VELOCITY * DrivetrainConstants.METERS_TO_ROTATIONS * 60 * Math.signum(m_targetDistance);
+    /** 
+     * A dead reckoning drive command.
+     * Takes in target distance in meters and drives straight that amount.
+     * Uses default target velocity of ??? m/s. 
+     */ 
+    public DistanceDriveCommand(Drivetrain drivetrain, double targetDistance) {
+        m_drivetrain = drivetrain;
+        m_targetDistance = targetDistance * DrivetrainConstants.METERS_TO_ROTATIONS; // convert meters to motor rotations
+        // System.out.println("Target meters: " + targetDistance + ", target rotations: " + m_targetDistance);
+        m_targetVelocity = AutoConstants.DEFAULT_TARGET_VELOCITY * DrivetrainConstants.METERS_TO_ROTATIONS * 60 * Math.signum(m_targetDistance);
 
-    m_leftPIDController = m_drivetrain.m_leftPrimary.getPIDController();
-    m_rightPIDController = m_drivetrain.m_rightPrimary.getPIDController();
+        m_leftPIDController = m_drivetrain.m_leftPrimary.getPIDController();
+        m_rightPIDController = m_drivetrain.m_rightPrimary.getPIDController();
 
-    // m_timer = new Timer();
+        // m_timer = new Timer();
 
-    addRequirements(drivetrain);
-  }
+        addRequirements(drivetrain);
+    }
 
-  /** 
-   * A dead reckoning drive command.
-   * Takes in target distance in meters and drives straight that amount.
-   * Takes in target speed in meters per second (always positive).
-   */ 
-  public DistanceDriveCommand(Drivetrain drivetrain, double targetDistance, double targetVelocity) {
-    m_drivetrain = drivetrain;
-    m_targetDistance = targetDistance * DrivetrainConstants.METERS_TO_ROTATIONS; // convert meters to motor rotations
-    // System.out.println("Target meters: " + targetDistance + ", target rotations: " + m_targetDistance);
-    m_targetVelocity = targetVelocity * DrivetrainConstants.METERS_TO_ROTATIONS * 60 * Math.signum(m_targetDistance); // convert meters/sec to RPM
+    /** 
+     * A dead reckoning drive command.
+     * Takes in target distance in meters and drives straight that amount.
+     * Takes in target speed in meters per second (always positive).
+     */ 
+    public DistanceDriveCommand(Drivetrain drivetrain, double targetDistance, double targetVelocity) {
+        m_drivetrain = drivetrain;
+        m_targetDistance = targetDistance * DrivetrainConstants.METERS_TO_ROTATIONS; // convert meters to motor rotations
+        // System.out.println("Target meters: " + targetDistance + ", target rotations: " + m_targetDistance);
+        m_targetVelocity = targetVelocity * DrivetrainConstants.METERS_TO_ROTATIONS * 60 * Math.signum(m_targetDistance); // convert meters/sec to RPM
 
-    m_leftPIDController = m_drivetrain.m_leftPrimary.getPIDController();
-    m_rightPIDController = m_drivetrain.m_rightPrimary.getPIDController();
+        m_leftPIDController = m_drivetrain.m_leftPrimary.getPIDController();
+        m_rightPIDController = m_drivetrain.m_rightPrimary.getPIDController();
 
-    addRequirements(drivetrain);
-  }
+        addRequirements(drivetrain);
+    }
 
-  @Override
-  public void initialize() {
-    // resets positions of encoders
-    m_drivetrain.setRightEncoder(0);
-    m_drivetrain.setleftEncoder(0);
+    @Override
+    public void initialize() {
+        // resets positions of encoders
+        m_drivetrain.setRightEncoder(0);
+        m_drivetrain.setleftEncoder(0);
 
-    // m_timer.reset();
-    // m_timer.start();
+        // m_timer.reset();
+        // m_timer.start();
 
-    // // configure PID controllers (with constants)
-    // m_leftPIDController.setP(DrivetrainConstants.K_P);
-    // m_leftPIDController.setI(DrivetrainConstants.K_I);
-    // m_leftPIDController.setD(DrivetrainConstants.K_D);
-    // m_leftPIDController.setIZone(DrivetrainConstants.K_IZ);
-    // m_leftPIDController.setFF(DrivetrainConstants.K_FF);
-    // m_leftPIDController.setOutputRange(DrivetrainConstants.K_MIN_OUTPUT, DrivetrainConstants.K_MAX_OUTPUT);
+        // // configure PID controllers (with constants)
+        // m_leftPIDController.setP(DrivetrainConstants.K_P);
+        // m_leftPIDController.setI(DrivetrainConstants.K_I);
+        // m_leftPIDController.setD(DrivetrainConstants.K_D);
+        // m_leftPIDController.setIZone(DrivetrainConstants.K_IZ);
+        // m_leftPIDController.setFF(DrivetrainConstants.K_FF);
+        // m_leftPIDController.setOutputRange(DrivetrainConstants.K_MIN_OUTPUT, DrivetrainConstants.K_MAX_OUTPUT);
 
-    // m_rightPIDController.setP(DrivetrainConstants.K_P);
-    // m_rightPIDController.setI(DrivetrainConstants.K_I);
-    // m_rightPIDController.setD(DrivetrainConstants.K_D);
-    // m_rightPIDController.setIZone(DrivetrainConstants.K_IZ);
-    // m_rightPIDController.setFF(DrivetrainConstants.K_FF);
-    // m_rightPIDController.setOutputRange(DrivetrainConstants.K_MIN_OUTPUT, DrivetrainConstants.K_MAX_OUTPUT);
+        // m_rightPIDController.setP(DrivetrainConstants.K_P);
+        // m_rightPIDController.setI(DrivetrainConstants.K_I);
+        // m_rightPIDController.setD(DrivetrainConstants.K_D);
+        // m_rightPIDController.setIZone(DrivetrainConstants.K_IZ);
+        // m_rightPIDController.setFF(DrivetrainConstants.K_FF);
+        // m_rightPIDController.setOutputRange(DrivetrainConstants.K_MIN_OUTPUT, DrivetrainConstants.K_MAX_OUTPUT);
 
-    // read PID coefficients from SmartDashboard
-    // SmartDashboard.putNumber("P Gain", 0);
-    // SmartDashboard.putNumber("I Gain", 0);
-    // SmartDashboard.putNumber("D Gain", 0);
-    // SmartDashboard.putNumber("I Zone", 0);
-    // SmartDashboard.putNumber("Feed Forward", 0);
+        // read PID coefficients from SmartDashboard
+        // SmartDashboard.putNumber("P Gain", 0);
+        // SmartDashboard.putNumber("I Gain", 0);
+        // SmartDashboard.putNumber("D Gain", 0);
+        // SmartDashboard.putNumber("I Zone", 0);
+        // SmartDashboard.putNumber("Feed Forward", 0);
 
-    // // double p = SmartDashboard.getNumber("P Gain", 0);
-    // // double i = SmartDashboard.getNumber("I Gain", 0);
-    // double d = SmartDashboard.getNumber("D Gain", 0);
-    // double iz = SmartDashboard.getNumber("I Zone", 0);
-    // double ff = SmartDashboard.getNumber("Feed Forward", 0);
-    
-    double p = 0.0004; //0.0003
-    double i = 0;
-    double d = 0;
-    double iz = 0;
-    double ff = 0;
+        // // double p = SmartDashboard.getNumber("P Gain", 0);
+        // // double i = SmartDashboard.getNumber("I Gain", 0);
+        // double d = SmartDashboard.getNumber("D Gain", 0);
+        // double iz = SmartDashboard.getNumber("I Zone", 0);
+        // double ff = SmartDashboard.getNumber("Feed Forward", 0);
+        
+        double p = 0.0004; //0.0003
+        double i = 0;
+        double d = 0;
+        double iz = 0;
+        double ff = 0;
 
-    m_leftPIDController.setP(p);
-    m_leftPIDController.setI(i);
-    m_leftPIDController.setD(d);
-    m_leftPIDController.setIZone(iz);
-    m_leftPIDController.setFF(ff);
-    m_leftPIDController.setOutputRange(DrivetrainConstants.K_MIN_OUTPUT, DrivetrainConstants.K_MAX_OUTPUT);
+        m_leftPIDController.setP(p);
+        m_leftPIDController.setI(i);
+        m_leftPIDController.setD(d);
+        m_leftPIDController.setIZone(iz);
+        m_leftPIDController.setFF(ff);
+        m_leftPIDController.setOutputRange(DrivetrainConstants.K_MIN_OUTPUT, DrivetrainConstants.K_MAX_OUTPUT);
 
-    m_rightPIDController.setP(p);
-    m_rightPIDController.setI(i);
-    m_rightPIDController.setD(d);
-    m_rightPIDController.setIZone(iz);
-    m_rightPIDController.setFF(ff);
-    m_rightPIDController.setOutputRange(DrivetrainConstants.K_MIN_OUTPUT, DrivetrainConstants.K_MAX_OUTPUT);
+        m_rightPIDController.setP(p);
+        m_rightPIDController.setI(i);
+        m_rightPIDController.setD(d);
+        m_rightPIDController.setIZone(iz);
+        m_rightPIDController.setFF(ff);
+        m_rightPIDController.setOutputRange(DrivetrainConstants.K_MIN_OUTPUT, DrivetrainConstants.K_MAX_OUTPUT);
 
-  }
+    }
 
-  @Override
-  public void execute() {
-      m_leftPIDController.setReference(m_targetVelocity, CANSparkMax.ControlType.kVelocity);
-      m_rightPIDController.setReference(m_targetVelocity, CANSparkMax.ControlType.kVelocity);
+    @Override
+    public void execute() {
+            m_leftPIDController.setReference(m_targetVelocity, CANSparkMax.ControlType.kVelocity);
+            m_rightPIDController.setReference(m_targetVelocity, CANSparkMax.ControlType.kVelocity);
 
-      System.out.println("Encoder velocities in m/s: " + m_drivetrain.getLeftEncoderVelocity() / (DrivetrainConstants.METERS_TO_ROTATIONS * 60) 
-          + ", " + m_drivetrain.getRightEncoderVelocity() / (DrivetrainConstants.METERS_TO_ROTATIONS * 60));
-  }
+            System.out.println("Encoder velocities in m/s: " + m_drivetrain.getLeftEncoderVelocity() / (DrivetrainConstants.METERS_TO_ROTATIONS * 60) 
+                    + ", " + m_drivetrain.getRightEncoderVelocity() / (DrivetrainConstants.METERS_TO_ROTATIONS * 60));
+    }
 
-  @Override
-  public void end(boolean interrupted) {
-    m_drivetrain.stopMotors();
-    m_drivetrain.setRightEncoder(0);
-    m_drivetrain.setleftEncoder(0);
-    // m_timer.stop();
-    // m_timer.reset();
-  }
+    @Override
+    public void end(boolean interrupted) {
+        m_drivetrain.stopMotors();
+        m_drivetrain.setRightEncoder(0);
+        m_drivetrain.setleftEncoder(0);
+        // m_timer.stop();
+        // m_timer.reset();
+    }
 
-  @Override
-  public boolean isFinished() {
-    // calculates if either encoder has moved enough to reach the target distance
-    return (Math.abs(m_drivetrain.getRightEncoderPosition()) > Math.abs(m_targetDistance)
-    || Math.abs(m_drivetrain.getLeftEncoderPosition()) > Math.abs(m_targetDistance));
-  }
+    @Override
+    public boolean isFinished() {
+        // calculates if either encoder has moved enough to reach the target distance
+        return (Math.abs(m_drivetrain.getRightEncoderPosition()) > Math.abs(m_targetDistance)
+        || Math.abs(m_drivetrain.getLeftEncoderPosition()) > Math.abs(m_targetDistance));
+    }
 }

@@ -14,29 +14,29 @@ import frc.robot.subsystems.Drivetrain;
  *  Positive degrees = clockwise turning, negative degrees = counterclockwise
  */
 public class InitializeNavX extends Command {
-  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private final Drivetrain m_drivetrain;
-  private double m_degrees;
+    @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
+    private final Drivetrain m_drivetrain;
+    private double m_degrees;
 
-  public InitializeNavX(Drivetrain drivetrain, double degrees) {
-    m_drivetrain = drivetrain;
-    m_degrees = degrees;
-    addRequirements(drivetrain);
-  }
+    public InitializeNavX(Drivetrain drivetrain, double degrees) {
+        m_drivetrain = drivetrain;
+        m_degrees = degrees;
+        addRequirements(drivetrain);
+    }
 
-  @Override
-  public void initialize() {
-    m_drivetrain.rotationOffset(m_degrees);
-  }
+    @Override
+    public void initialize() {
+        m_drivetrain.rotationOffset(m_degrees);
+    }
 
-  @Override
-  public void execute() {}
+    @Override
+    public void execute() {}
 
-  @Override
-  public void end(boolean interrupted) {}
+    @Override
+    public void end(boolean interrupted) {}
 
-  @Override
-  public boolean isFinished() {
-    return true;
-  }
+    @Override
+    public boolean isFinished() {
+        return true;
+    }
 }

@@ -9,28 +9,28 @@ import frc.robot.subsystems.LeftClimber;
 
 /** An example command that uses an example subsystem. */
 public class PrintClimberEncoder extends Command {
-  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private final LeftClimber m_climber;
+    @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
+    private final LeftClimber m_climber;
 
-  public PrintClimberEncoder(LeftClimber climber) {
-    m_climber = climber;
-    addRequirements(climber);
-  }
+    public PrintClimberEncoder(LeftClimber climber) {
+        m_climber = climber;
+        addRequirements(climber);
+    }
 
-  @Override
-  public void initialize() {}
+    @Override
+    public void initialize() {}
 
-  @Override
-  public void execute() {
-    System.out.println(m_climber.getLeftEncoderPosition());
-    // System.out.println(m_climber.getRightEncoderPosition());
-  }
+    @Override
+    public void execute() {
+        System.out.println(m_climber.getLeftEncoderPosition());
+        // System.out.println(m_climber.getRightEncoderPosition());
+    }
 
-  @Override
-  public void end(boolean interrupted) {}
+    @Override
+    public void end(boolean interrupted) {}
 
-  @Override
-  public boolean isFinished() {
-    return false;
-  }
+    @Override
+    public boolean isFinished() {
+        return false;
+    }
 }

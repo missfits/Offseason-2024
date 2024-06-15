@@ -16,139 +16,139 @@ package frc.robot;
  */
 public final class Constants {
 
-  public static class OperatorConstants {
-    public static final int DRIVER_XBOX_PORT = 0;
-    public static final int COPILOT_XBOX_PORT = 1;
+    public static class OperatorConstants {
+        public static final int DRIVER_XBOX_PORT = 0;
+        public static final int COPILOT_XBOX_PORT = 1;
 
-    public static final double DRIVER_JOYSTICK_DEADBAND = 0.1;
+        public static final double DRIVER_JOYSTICK_DEADBAND = 0.1;
 
-    public static final double DRIVE_SPEED_ADJUSTMENT = 1.0;
-    public static final double DRIVE_ROTATION_ADJUSTMENT = 0.8;
+        public static final double DRIVE_SPEED_ADJUSTMENT = 1.0;
+        public static final double DRIVE_ROTATION_ADJUSTMENT = 0.8;
 
-    public static final double SLEW_RATE_LIMIT = 1.9;
-  }
+        public static final double SLEW_RATE_LIMIT = 1.9;
+    }
 
-  public static class DrivetrainConstants {
-    public static final int LEFT_MOTOR_1_PORT = 1;
-    public static final int LEFT_MOTOR_2_PORT = 2;
-    public static final int RIGHT_MOTOR_1_PORT = 3;
-    public static final int RIGHT_MOTOR_2_PORT = 4;
+    public static class DrivetrainConstants {
+        public static final int LEFT_MOTOR_1_PORT = 1;
+        public static final int LEFT_MOTOR_2_PORT = 2;
+        public static final int RIGHT_MOTOR_1_PORT = 3;
+        public static final int RIGHT_MOTOR_2_PORT = 4;
 
-    public static final int COUNTS_PER_REV = 42;
+        public static final int COUNTS_PER_REV = 42;
 
-    // 1 meter = 39.37 inches = 2.088 wheel rotations = 17.664 motor rotations (assuming gear ratio = 8.46)
-    public static final double METERS_TO_ROTATIONS = 17.664;
-    public static final double DEGREES_TO_ROTATIONS = 0.1; // value accurate as of 2/13/24
-    public static final double ENCODER_TICKS_TO_METERS = 0.0013; // calculated based on METERS_TO_ROTATIONS and COUNTS_PER_REV
+        // 1 meter = 39.37 inches = 2.088 wheel rotations = 17.664 motor rotations (assuming gear ratio = 8.46)
+        public static final double METERS_TO_ROTATIONS = 17.664;
+        public static final double DEGREES_TO_ROTATIONS = 0.1; // value accurate as of 2/13/24
+        public static final double ENCODER_TICKS_TO_METERS = 0.0013; // calculated based on METERS_TO_ROTATIONS and COUNTS_PER_REV
 
-    // PID testing: https://www.chiefdelphi.com/t/how-do-you-tune-your-pid-gains/367425/8
-    public static final double K_P = 0; // TO DO: TEST
-    public static final double K_I = 0; // TO DO: TEST
-    public static final double K_D = 0; // TO DO: TEST
-    public static final double K_MAX_OUTPUT = 1;
-    public static final double K_MIN_OUTPUT = -1;
-    public static final double MAX_RPM = 5676;
-    public static final double K_IZ = 0; // tune
-    public static final double K_FF = 0; // tune
+        // PID testing: https://www.chiefdelphi.com/t/how-do-you-tune-your-pid-gains/367425/8
+        public static final double K_P = 0; // TO DO: TEST
+        public static final double K_I = 0; // TO DO: TEST
+        public static final double K_D = 0; // TO DO: TEST
+        public static final double K_MAX_OUTPUT = 1;
+        public static final double K_MIN_OUTPUT = -1;
+        public static final double MAX_RPM = 5676;
+        public static final double K_IZ = 0; // tune
+        public static final double K_FF = 0; // tune
 
-    public static final double ROTATION_KP = 0;
-    public static final double ROTATION_KI = 0;
-    public static final double ROTATION_KD = 0;
+        public static final double ROTATION_KP = 0;
+        public static final double ROTATION_KI = 0;
+        public static final double ROTATION_KD = 0;
 
-  }
+    }
 
-  public static class IntakeConstants {
-    public static final int INTAKE_MOTOR_PORT = 5;
+    public static class IntakeConstants {
+        public static final int INTAKE_MOTOR_PORT = 5;
 
-    public static final double INTAKE_MOTOR_SPEED_IN = -0.8; // finalized as of 04/02/24
-    public static final double INTAKE_MOTOR_SPEED_OUT = 0.2;
+        public static final double INTAKE_MOTOR_SPEED_IN = -0.8; // finalized as of 04/02/24
+        public static final double INTAKE_MOTOR_SPEED_OUT = 0.2;
 
-    public static final int COUNTS_PER_REV = 42;
-  }
+        public static final int COUNTS_PER_REV = 42;
+    }
 
-  public static class IndexerConstants {
-    public static final int INDEXER_MOTOR_PORT = 6;
+    public static class IndexerConstants {
+        public static final int INDEXER_MOTOR_PORT = 6;
 
-    public static final double INDEXER_MOTOR_SPEED_DOWN = -0.2;
-    public static final double INDEXER_MOTOR_SPEED_UP = 0.4;
+        public static final double INDEXER_MOTOR_SPEED_DOWN = -0.2;
+        public static final double INDEXER_MOTOR_SPEED_UP = 0.4;
 
-    public static final double INDEXER_MOTOR_SPEED_DOWN_BACKUP = -0.2; // for testing/backup, finalized 02/23/2024
-    public static final double INDEXER_MOTOR_SPEED_UP_BACKUP = 0.2; // for testing/backup, finalized 02/23/2024
+        public static final double INDEXER_MOTOR_SPEED_DOWN_BACKUP = -0.2; // for testing/backup, finalized 02/23/2024
+        public static final double INDEXER_MOTOR_SPEED_UP_BACKUP = 0.2; // for testing/backup, finalized 02/23/2024
 
-    public static final double INDEXER_MOTOR_REVERSE_SPEED = -0.1; // for running the note backwards a little after beam break
-    public static final double REVERSE_DISTANCE = -0.05; // TO DO: test
+        public static final double INDEXER_MOTOR_REVERSE_SPEED = -0.1; // for running the note backwards a little after beam break
+        public static final double REVERSE_DISTANCE = -0.05; // TO DO: test
 
-    public static final int COUNTS_PER_REV = 42;
-  }
-  public static class ShooterConstants {
-    public static final int SHOOTER_MOTOR_PORT = 7;
+        public static final int COUNTS_PER_REV = 42;
+    }
+    public static class ShooterConstants {
+        public static final int SHOOTER_MOTOR_PORT = 7;
 
-    public static final double SHOOTER_MOTOR_SPEED_AMP = HoodConstants.HOOD_MOTOR_SPEED / -2.0; // should be half of HOOD_MOTOR_SPEED, finalized 03/5/2024
-    public static final double SHOOTER_MOTOR_SPEED_SPEAKER = -0.5; // correct as of 3/9/24
-    public static final double SHOOTER_MOTOR_SPEED_OUT = -0.5; // constant for testing
+        public static final double SHOOTER_MOTOR_SPEED_AMP = HoodConstants.HOOD_MOTOR_SPEED / -2.0; // should be half of HOOD_MOTOR_SPEED, finalized 03/5/2024
+        public static final double SHOOTER_MOTOR_SPEED_SPEAKER = -0.5; // correct as of 3/9/24
+        public static final double SHOOTER_MOTOR_SPEED_OUT = -0.5; // constant for testing
 
-    // FOR AUTO
-    public static final double SHOOTER_TARGET_SPEED_SPEAKER = 2400;
+        // FOR AUTO
+        public static final double SHOOTER_TARGET_SPEED_SPEAKER = 2400;
 
-    public static final int COUNTS_PER_REV = 42;
-  }
+        public static final int COUNTS_PER_REV = 42;
+    }
 
-  public static class HoodConstants {
-    public static final int HOOD_MOTOR_PORT = 9; // correct as of 2/20/24
-    public static final int PIVOT_MOTOR_PORT = 8; // correct as of 2/20/24
+    public static class HoodConstants {
+        public static final int HOOD_MOTOR_PORT = 9; // correct as of 2/20/24
+        public static final int PIVOT_MOTOR_PORT = 8; // correct as of 2/20/24
 
-    public static final double HOOD_MOTOR_SPEED = 0.6; // should be double of SHOOTER_MOTOR_SPEED_AMP, finalized 03 /5/2024
+        public static final double HOOD_MOTOR_SPEED = 0.6; // should be double of SHOOTER_MOTOR_SPEED_AMP, finalized 03 /5/2024
 
-    public static final double PIVOT_MOTOR_SPEED = 0.5; // finalized 02/23/2024
-    public static final double SLOW_PIVOT_MOTOR_SPEED = 0.2; // finalized 02/23/2024
+        public static final double PIVOT_MOTOR_SPEED = 0.5; // finalized 02/23/2024
+        public static final double SLOW_PIVOT_MOTOR_SPEED = 0.2; // finalized 02/23/2024
 
-    // assuming hood back is at encoder position 0, PIVOT_DISTANCE is the required encoder position for the hood to be forward
-    public static final double PIVOT_DISTANCE = -30.43; // correct as of 3/5/24
+        // assuming hood back is at encoder position 0, PIVOT_DISTANCE is the required encoder position for the hood to be forward
+        public static final double PIVOT_DISTANCE = -30.43; // correct as of 3/5/24
 
 
-    public static final int COUNTS_PER_REV = 42;
-  }
+        public static final int COUNTS_PER_REV = 42;
+    }
 
-  public static class ClimberConstants {
-    public static final int CLIMBER_MOTOR_PORT_LEFT = 11;
-    public static final int CLIMBER_MOTOR_PORT_RIGHT = 10;
+    public static class ClimberConstants {
+        public static final int CLIMBER_MOTOR_PORT_LEFT = 11;
+        public static final int CLIMBER_MOTOR_PORT_RIGHT = 10;
 
-    public static final double CLIMBER_MOTOR_SPEED = 0.7; //TO DO: TUNE
+        public static final double CLIMBER_MOTOR_SPEED = 0.7; //TO DO: TUNE
 
-    public static final int COUNTS_PER_REV = 42;
-  }
+        public static final int COUNTS_PER_REV = 42;
+    }
 
-  public static class AutoConstants {
-    public static final double SPEAKER_SHOOT_TIMEOUT = 4; // unit: seconds
-    public static final double CLOSE_INTAKE_TIMEOUT = 2; // in seconds
-    public static final double FAR_INTAKE_TIMEOUT = 10; // in seconds (untested for 2024) FIX!!!!!!
-    public static final double BETWEEN_NOTES_INTAKE_TIMEOUT = 2;
+    public static class AutoConstants {
+        public static final double SPEAKER_SHOOT_TIMEOUT = 4; // unit: seconds
+        public static final double CLOSE_INTAKE_TIMEOUT = 2; // in seconds
+        public static final double FAR_INTAKE_TIMEOUT = 10; // in seconds (untested for 2024) FIX!!!!!!
+        public static final double BETWEEN_NOTES_INTAKE_TIMEOUT = 2;
 
-    public static final double TAXI_DISTANCE = 2; // distance in meters to cross taxi line (untested for 2024)
-    public static final double FRONT_SPEAKER_TO_CENTER_NOTE = 1.33; // correct as of 3/9/24
-    public static final double CLOSE_DIAGONAL_DISTANCE = 0.30; // distance in meters from speaker
+        public static final double TAXI_DISTANCE = 2; // distance in meters to cross taxi line (untested for 2024)
+        public static final double FRONT_SPEAKER_TO_CENTER_NOTE = 1.33; // correct as of 3/9/24
+        public static final double CLOSE_DIAGONAL_DISTANCE = 0.30; // distance in meters from speaker
 
-    public static final double DISTANCE_BETWEEN_NOTES = 1.45;
+        public static final double DISTANCE_BETWEEN_NOTES = 1.45;
 
-        // side to align with close note (untested for 2024)
-    public static final double CLOSE_HORIZONTAL_DISTANCE = 1.8; // distance in meters to close
-        //  note after alignment (untested for 2024)
-    public static final double FAR_DIAGONAL_DISTANCE = 0.86; // distance in meters from speaker
-        // side to align with far note (untested for 2024)
-    public static final double FAR_HORIZONTAL_DISTANCE = 7.23; // distance in meters to far note
-        //  after alignment (untested for 2024)
-    public static final double SFR_ELIMS_DISTANCE = 5; // distance in meters to far note
-        //  after alignment (untested for 2024)
+                // side to align with close note (untested for 2024)
+        public static final double CLOSE_HORIZONTAL_DISTANCE = 1.8; // distance in meters to close
+                //  note after alignment (untested for 2024)
+        public static final double FAR_DIAGONAL_DISTANCE = 0.86; // distance in meters from speaker
+                // side to align with far note (untested for 2024)
+        public static final double FAR_HORIZONTAL_DISTANCE = 7.23; // distance in meters to far note
+                //  after alignment (untested for 2024)
+        public static final double SFR_ELIMS_DISTANCE = 5; // distance in meters to far note
+                //  after alignment (untested for 2024)
 
-    public static final double TAXI_AUTO_SPEED = 0.4; // (temp) speed of robot during taxi auto
-    public static final double ROTATION_SPEED = 0.5;
-    public static final double SLOW_ROTATION_SPEED = 0.15;
+        public static final double TAXI_AUTO_SPEED = 0.4; // (temp) speed of robot during taxi auto
+        public static final double ROTATION_SPEED = 0.5;
+        public static final double SLOW_ROTATION_SPEED = 0.15;
 
-    public static final double END_ANGLE_THRESHOLD = 10;
-    public static final double SLOW_ANGLE_THRESHOLD = 20;
+        public static final double END_ANGLE_THRESHOLD = 10;
+        public static final double SLOW_ANGLE_THRESHOLD = 20;
 
-    public static final double TURN_ADJUSTMENT = 9;
+        public static final double TURN_ADJUSTMENT = 9;
 
-    public static final double DEFAULT_TARGET_VELOCITY = -2; // FIX THIS !!!!!! (in m/s)
-  }
+        public static final double DEFAULT_TARGET_VELOCITY = -2; // FIX THIS !!!!!! (in m/s)
+    }
 }

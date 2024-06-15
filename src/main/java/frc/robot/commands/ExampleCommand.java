@@ -9,25 +9,25 @@ import frc.robot.subsystems.ExampleSubsystem;
 
 /** An example command that uses an example subsystem. */
 public class ExampleCommand extends Command {
-  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private final ExampleSubsystem m_subsystem;
+    @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
+    private final ExampleSubsystem m_subsystem;
 
-  public ExampleCommand(ExampleSubsystem subsystem) {
-    m_subsystem = subsystem;
-    addRequirements(subsystem);
-  }
+    public ExampleCommand(ExampleSubsystem subsystem) {
+        m_subsystem = subsystem;
+        addRequirements(subsystem);
+    }
 
-  @Override
-  public void initialize() {}
+    @Override
+    public void initialize() {}
 
-  @Override
-  public void execute() {}
+    @Override
+    public void execute() {}
 
-  @Override
-  public void end(boolean interrupted) {}
+    @Override
+    public void end(boolean interrupted) {}
 
-  @Override
-  public boolean isFinished() {
-    return false;
-  }
+    @Override
+    public boolean isFinished() {
+        return false;
+    }
 }
