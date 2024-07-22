@@ -119,6 +119,11 @@ public class RobotContainer {
     m_chooser.addOption("2pc auto from left", Autos.leftSpeaker2pc(m_drivetrain, m_intake, m_indexer, m_shooter));
     m_chooser.addOption("2pc auto from right", Autos.rightSpeaker2pc(m_drivetrain, m_intake, m_indexer, m_shooter));
 
+    m_chooser.addOption("red source, shoot delay taxi", Autos.redSourceShootTaxi(m_drivetrain, m_indexer, m_shooter));
+    m_chooser.addOption("blue source, shoot delay taxi", Autos.blueSourceShootTaxi(m_drivetrain, m_indexer, m_shooter));
+    m_chooser.addOption("blue amp, shoot delay taxi", Autos.blueAmpShootTaxi(m_drivetrain, m_indexer, m_shooter));
+    m_chooser.addOption("red amp, shoot delay taxi", Autos.redAmpShootTaxi(m_drivetrain, m_indexer, m_shooter));
+
     ShuffleboardTab compTab = Shuffleboard.getTab("Comp HUD");
     compTab.add("Auto Chooser", m_chooser).withSize(6, 4);
 

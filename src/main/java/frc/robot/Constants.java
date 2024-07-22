@@ -119,6 +119,9 @@ public final class Constants {
         //  after alignment (untested for 2024)
     public static final double SFR_ELIMS_DISTANCE = 5; // distance in meters to far note
         //  after alignment (untested for 2024)
+    public static final double SOURCE_TAXI_DISTANCE = 6; // distance in meters to taxi on source side
+        //  after alignment (untested for 2024)
+
 
     public static final double TAXI_AUTO_SPEED = 0.6; // (temp) speed of robot during taxi auto
     public static final double ROTATION_SPEED = 0.5;
