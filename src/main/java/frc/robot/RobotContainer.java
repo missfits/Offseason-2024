@@ -40,6 +40,7 @@ import frc.robot.commands.ShooterHoodBackward;
 
 // auto commands
 import frc.robot.commands.DistanceDriveCommand;
+import frc.robot.commands.HoodEncoderDisplayCommand;
 import frc.robot.commands.RotationCommand;
 // subsystems
 import frc.robot.subsystems.Drivetrain;
@@ -98,7 +99,7 @@ public class RobotContainer {
 
     // set default commands
     m_drivetrain.setDefaultCommand(new ArcadeDriveCommand(m_drivetrain, m_humanControl));
-    // m_hood.setDefaultCommand(new PrintHoodEncoder(m_hood));
+    m_hood.setDefaultCommand(new HoodEncoderDisplayCommand(m_hood));
     // m_indexer.setDefaultCommand(new BeamBreakCommand(m_indexer)); // for testing
     // m_climber.setDefaultCommand(new PrintClimberEncoder(m_climber));
 
