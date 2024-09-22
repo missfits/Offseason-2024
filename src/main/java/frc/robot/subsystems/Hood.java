@@ -20,6 +20,8 @@ public class Hood extends SubsystemBase {
     
     // constructor
     public Hood() {
+        m_pivotHoodMotor.setSmartCurrentLimit(40);
+
     }
 
     // Sets intake motor speed (forward if positive, backward if negative)
@@ -62,5 +64,11 @@ public class Hood extends SubsystemBase {
     public void pivotMotorOff() {
       m_pivotHoodMotor.set(0);
       m_pivotHoodMotor.stopMotor();
+    }
+
+    // gets PivotEncoderPosition and converts it to Degrees
+    public double getPivotPositionDegrees() {
+        return getPivotEncoderPosition()*HoodConstants.ENCODER_TO_DEGREES; //multiplied by -1 because getPivotEncoderPosition is negative
+        
     }
 }

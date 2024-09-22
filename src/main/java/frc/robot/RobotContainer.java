@@ -27,6 +27,7 @@ import frc.robot.commands.ClimberDownRightCommand;
 // hood pivot commands
 import frc.robot.commands.HoodPivotBackwardCommand;
 import frc.robot.commands.HoodPivotForwardCommand;
+import frc.robot.commands.HoodPivotPID;
 import frc.robot.commands.HoodRollerCommand;
 import frc.robot.commands.HoodPivotBackwardBackup;
 import frc.robot.commands.HoodPivotForwardBackup;
@@ -146,15 +147,13 @@ public class RobotContainer {
     OI.m_coPilotXbox.leftTrigger().whileTrue(new ShooterSpeakerCommand(m_shooter));
     OI.m_coPilotXbox.rightTrigger().whileTrue(new ShooterAmpCommand(m_shooter, m_hood));
 
-    OI.m_coPilotXbox.leftBumper().whileTrue(new HoodPivotForwardCommand(m_hood));
-    OI.m_coPilotXbox.rightBumper().whileTrue(new HoodPivotBackwardCommand(m_hood));
+    OI.m_coPilotXbox.leftBumper().whileTrue(new HoodPivotPID(m_hood, 171));
+    OI.m_coPilotXbox.rightBumper().whileTrue(new HoodPivotPID(m_hood, 5));
 
     // back and start buttons are backup commands for if the hood encoders mess up
     OI.m_coPilotXbox.back().whileTrue(new HoodPivotForwardBackup(m_hood));
     OI.m_coPilotXbox.start().whileTrue(new HoodPivotBackwardBackup(m_hood));
   
-    // OI.m_coPilotXbox.leftStick().whileTrue(new IntakeIndexCommandBackup(m_indexer, m_intake)); // backup intakeindex command in case beam break has issues
-    // OI.m_coPilotXbox.leftStick().whileTrue(new ClimberUpCommand(m_climber)); // for testing only!
     OI.m_coPilotXbox.leftStick().whileTrue(new ClimberDownRightCommand(m_rightClimber)); 
     OI.m_coPilotXbox.rightStick().whileTrue(new ClimberDownLeftCommand(m_leftClimber));
     // are the CAN IDs switched?? CHECK
