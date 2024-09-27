@@ -89,6 +89,9 @@ public final class Constants {
     // assuming hood back is at encoder position 0, PIVOT_DISTANCE is the required encoder position for the hood to be forward
     public static final double PIVOT_DISTANCE = -30.43; // correct as of 3/5/24
     public static final double ENCODER_TO_DEGREES = 1/36./42.*24.*-1.*360; //encoder value to degrees (0 is backwards position)
+    public static final double RUN_AMP_LOWER_BOUND = 5; //lower limit to run the amp in degrees
+    public static final double RUN_AMP_UPPER_BOUND = 180; //upper limit to run the amp in degrees
+    
 
 
     public static final int COUNTS_PER_REV = 42;
