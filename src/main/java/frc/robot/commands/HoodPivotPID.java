@@ -8,37 +8,38 @@ import frc.robot.subsystems.Hood;
 
 import frc.robot.Constants.HoodConstants;
 
-
 /**
- * Puts hood forward (in amp shooting position).
- * In encoder position, moves the hood from 0 to approximately -48.2.
+ * Moves hood to setpointAngle
  */
 public class HoodPivotPID extends Command{
     private final Hood m_hood;
     private final double m_setpointAngle;
     private final PIDController m_controller;
 
-
     public HoodPivotPID(Hood hood, double setpointAngle){
         m_hood = hood;
         m_setpointAngle = setpointAngle;
-        m_controller = new PIDController(0.01, 0, 0);
-        m_controller.setTolerance(0.5); // error bound
+        m_controller = new PIDController(HoodConstants.PID_KP, HoodConstants.PID_KI, HoodConstants.PID_KD);
+        m_controller.setTolerance(HoodConstants.TARGET_TOLERANCE);
         addRequirements(hood);
     }
 
     @Override
     public void initialize() {
-        // m_hood.resetPivotEncoderPosition();
         m_controller.reset();
+        SmartDashboard.putNumber("Hood Setpoint Angle", m_setpointAngle);
     }  
 
     @Override
     public void execute() {
         double measuredAngle = m_hood.getPivotPositionDegrees();
+        // multiplied by -1 to ensure motor turns in the correct direction
         double calculatedOutput = -1.*m_controller.calculate(measuredAngle, m_setpointAngle);
-        calculatedOutput = MathUtil.clamp(calculatedOutput, -0.6, 0.6);
+        calculatedOutput = MathUtil.clamp(calculatedOutput, -1*HoodConstants.MAX_POWER, HoodConstants.MAX_POWER);
         m_hood.runPivotHoodMotor(calculatedOutput);
+
+        SmartDashboard.putNumber("Hood Measured Angle", measuredAngle);
+        SmartDashboard.putNumber("Hood Calculated Output", calculatedOutput);
     }
 
     @Override
