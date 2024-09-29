@@ -30,7 +30,6 @@ public class HoodPivotBackwardCommand extends Command {
         }else{
             m_hood.runPivotHoodMotor(HoodConstants.PIVOT_MOTOR_SPEED);
         }
-        // System.out.println(m_hood.getPivotEncoderPosition());
         SmartDashboard.putNumber("Hood Encoder", m_hood.getPivotEncoderPosition());
     }
 

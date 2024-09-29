@@ -20,7 +20,7 @@ public class Hood extends SubsystemBase {
     
     // constructor
     public Hood() {
-        m_pivotHoodMotor.setSmartCurrentLimit(40);
+        m_pivotHoodMotor.setSmartCurrentLimit(HoodConstants.CURRENT_LIMIT);
 
     }
 
@@ -66,9 +66,10 @@ public class Hood extends SubsystemBase {
       m_pivotHoodMotor.stopMotor();
     }
 
-    // gets PivotEncoderPosition and converts it to Degrees
+    // Gets PivotEncoderPosition and converts it to degrees
     public double getPivotPositionDegrees() {
-        return getPivotEncoderPosition()*HoodConstants.ENCODER_TO_DEGREES; //multiplied by -1 because getPivotEncoderPosition is negative
+        // Reversed from motor direction. 0 degrees is starting position, and travel is between 0 and ~180
+        return getPivotEncoderPosition()*HoodConstants.ENCODER_TO_DEGREES;
         
     }
 }

@@ -86,13 +86,24 @@ public final class Constants {
     public static final double PIVOT_MOTOR_SPEED = 0.5; // finalized 02/23/2024
     public static final double SLOW_PIVOT_MOTOR_SPEED = 0.2; // finalized 02/23/2024
 
+    public static final int CURRENT_LIMIT = 40;
+
     // assuming hood back is at encoder position 0, PIVOT_DISTANCE is the required encoder position for the hood to be forward
     public static final double PIVOT_DISTANCE = -30.43; // correct as of 3/5/24
+    
     public static final double ENCODER_TO_DEGREES = 1/36./42.*24.*-1.*360; //encoder value to degrees (0 is backwards position)
+    
     public static final double RUN_AMP_LOWER_BOUND = 5; //lower limit to run the amp in degrees
     public static final double RUN_AMP_UPPER_BOUND = 180; //upper limit to run the amp in degrees
     
-
+    // Hood PID constants
+    public static final double SETPOINT_DOWN_ANGLE = 5; // when not in use
+    public static final double SETPOINT_UP_ANGLE = 171; // when deployed
+    public static final double PID_KP = 0.1;
+    public static final double PID_KI = 0;
+    public static final double PID_KD = 0;
+    public static final double TARGET_TOLERANCE = 0.5;
+    public static final double MAX_POWER = 0.6;
 
     public static final int COUNTS_PER_REV = 42;
   }

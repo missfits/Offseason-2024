@@ -5,6 +5,7 @@
 package frc.robot;
 
 // import frc.robot.Constants.OperatorConstants;
+import frc.robot.Constants.HoodConstants;
 
 // import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.Autos;
@@ -147,8 +148,8 @@ public class RobotContainer {
     OI.m_coPilotXbox.leftTrigger().whileTrue(new ShooterSpeakerCommand(m_shooter));
     OI.m_coPilotXbox.rightTrigger().whileTrue(new ShooterAmpCommand(m_shooter, m_hood));
 
-    OI.m_coPilotXbox.leftBumper().whileTrue(new HoodPivotPID(m_hood, 171));
-    OI.m_coPilotXbox.rightBumper().whileTrue(new HoodPivotPID(m_hood, 5));
+    OI.m_coPilotXbox.leftBumper().whileTrue(new HoodPivotPID(m_hood, HoodConstants.SETPOINT_UP_ANGLE));
+    OI.m_coPilotXbox.rightBumper().whileTrue(new HoodPivotPID(m_hood, HoodConstants.SETPOINT_DOWN_ANGLE));
 
     // back and start buttons are backup commands for if the hood encoders mess up
     OI.m_coPilotXbox.back().whileTrue(new HoodPivotForwardBackup(m_hood));
