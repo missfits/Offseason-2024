@@ -31,8 +31,13 @@ public class ShooterAmpCommand extends Command {
 
     @Override
     public void execute() {
-        m_shooter.runShooterMotor(ShooterConstants.SHOOTER_MOTOR_SPEED_AMP);
-        m_hood.runHoodMotor(HoodConstants.HOOD_MOTOR_SPEED);
+        // if hood degrees is between these two values, wheels spin
+
+        if ((HoodConstants.RUN_AMP_LOWER_BOUND < m_hood.getPivotPositionDegrees()) 
+        && (m_hood.getPivotPositionDegrees() < HoodConstants.RUN_AMP_UPPER_BOUND)) {
+            m_shooter.runShooterMotor(ShooterConstants.SHOOTER_MOTOR_SPEED_AMP);
+            m_hood.runHoodMotor(HoodConstants.HOOD_MOTOR_SPEED);
+        }
     }
 
     @Override
