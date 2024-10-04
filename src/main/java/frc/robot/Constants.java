@@ -99,11 +99,11 @@ public final class Constants {
     // Hood PID constants
     public static final double SETPOINT_DOWN_ANGLE = 5; // when not in use
     public static final double SETPOINT_UP_ANGLE = 171; // when deployed
-    public static final double PID_KP = 0.1;
+    public static final double PID_KP = 0.015;
     public static final double PID_KI = 0;
     public static final double PID_KD = 0;
     public static final double TARGET_TOLERANCE = 0.5;
-    public static final double MAX_POWER = 0.6;
+    public static final double MAX_POWER = 0.5;
 
     public static final int COUNTS_PER_REV = 42;
   }
