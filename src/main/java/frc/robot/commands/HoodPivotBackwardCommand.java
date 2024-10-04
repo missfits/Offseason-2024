@@ -1,5 +1,6 @@
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Hood;
 
@@ -29,7 +30,7 @@ public class HoodPivotBackwardCommand extends Command {
         }else{
             m_hood.runPivotHoodMotor(HoodConstants.PIVOT_MOTOR_SPEED);
         }
-        System.out.println(m_hood.getPivotEncoderPosition());
+        SmartDashboard.putNumber("Hood Encoder", m_hood.getPivotEncoderPosition());
     }
 
     @Override
