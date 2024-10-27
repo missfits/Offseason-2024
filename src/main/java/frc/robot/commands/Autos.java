@@ -56,6 +56,24 @@ public final class Autos {
    * @param drivetrain drivetrain subsystem of robot
    * @param indexer intake subsystem of robot
    * @param shooter shooter subsystem of robot
+   * @return a sequential command group that shoots preloaded note into speaker (front edge) and taxis out
+   * 
+   * Start position: against the front edge of the speaker
+   * 
+   * UNTESTED
+   */
+  public static SequentialCommandGroup shootWaitTaxiFront(Drivetrain drivetrain, Indexer indexer, Shooter shooter) {
+    return new SequentialCommandGroup(
+      new AutoSpeakerShootCommand(indexer, shooter),
+      new WaitCommand(7),
+      new DistanceDriveCommand(drivetrain, AutoConstants.TAXI_DISTANCE)
+    );
+  }
+
+  /**
+   * @param drivetrain drivetrain subsystem of robot
+   * @param indexer intake subsystem of robot
+   * @param shooter shooter subsystem of robot
    * @return a sequential command group that shoots preloaded note into speaker (left edge) and taxis out
    * 
    * Start position: against the left edge of the speaker
@@ -75,6 +93,26 @@ public final class Autos {
    * @param drivetrain drivetrain subsystem of robot
    * @param indexer intake subsystem of robot
    * @param shooter shooter subsystem of robot
+   * @return a sequential command group that shoots preloaded note into speaker (left edge) and taxis out
+   * 
+   * Start position: against the left edge of the speaker
+   * 
+   * UNTESTED
+   */
+  public static SequentialCommandGroup shootWaitTaxiLeft(Drivetrain drivetrain, Indexer indexer, Shooter shooter) {
+    return new SequentialCommandGroup(
+      new AutoSpeakerShootCommand(indexer, shooter),
+      new WaitCommand(7),
+      new DistanceDriveCommand(drivetrain, AutoConstants.CLOSE_DIAGONAL_DISTANCE), // drive a little 
+      new RotationCommand(drivetrain, -40), // rotate
+      new DistanceDriveCommand(drivetrain, AutoConstants.TAXI_DISTANCE) // taxi forwards
+    );
+  }
+
+  /**
+   * @param drivetrain drivetrain subsystem of robot
+   * @param indexer intake subsystem of robot
+   * @param shooter shooter subsystem of robot
    * @return a sequential command group that shoots preloaded note into speaker (right edge) and taxis out
    * 
    * Start position: against the right edge of the speaker
@@ -84,6 +122,26 @@ public final class Autos {
   public static SequentialCommandGroup shootTaxiRight(Drivetrain drivetrain, Indexer indexer, Shooter shooter) {
     return new SequentialCommandGroup(
       new AutoSpeakerShootCommand(indexer, shooter),
+      new DistanceDriveCommand(drivetrain, AutoConstants.CLOSE_DIAGONAL_DISTANCE), // drive a little 
+      new RotationCommand(drivetrain, 40), // rotate
+      new DistanceDriveCommand(drivetrain, AutoConstants.TAXI_DISTANCE) // taxi forwards
+    );
+  }
+
+  /**
+   * @param drivetrain drivetrain subsystem of robot
+   * @param indexer intake subsystem of robot
+   * @param shooter shooter subsystem of robot
+   * @return a sequential command group that shoots preloaded note into speaker (right edge) and taxis out
+   * 
+   * Start position: against the right edge of the speaker
+   * 
+   * UNTESTED
+   */
+  public static SequentialCommandGroup shootWaitTaxiRight(Drivetrain drivetrain, Indexer indexer, Shooter shooter) {
+    return new SequentialCommandGroup(
+      new AutoSpeakerShootCommand(indexer, shooter),
+      new WaitCommand(7),
       new DistanceDriveCommand(drivetrain, AutoConstants.CLOSE_DIAGONAL_DISTANCE), // drive a little 
       new RotationCommand(drivetrain, 40), // rotate
       new DistanceDriveCommand(drivetrain, AutoConstants.TAXI_DISTANCE) // taxi forwards

@@ -117,6 +117,10 @@ public class RobotContainer {
     m_chooser.addOption("Shoot and taxi from front", Autos.shootTaxiFront(m_drivetrain, m_indexer, m_shooter));
     m_chooser.addOption("Shoot and taxi from left", Autos.shootTaxiLeft(m_drivetrain, m_indexer, m_shooter));
     m_chooser.addOption("Shoot and taxi from right", Autos.shootTaxiRight(m_drivetrain, m_indexer, m_shooter));
+
+    m_chooser.addOption("Shoot, wait and taxi from front", Autos.shootWaitTaxiFront(m_drivetrain, m_indexer, m_shooter));
+    m_chooser.addOption("Shoot, wait and taxi from left", Autos.shootWaitTaxiLeft(m_drivetrain, m_indexer, m_shooter));
+    m_chooser.addOption("Shoot, wait and taxi from right", Autos.shootWaitTaxiRight(m_drivetrain, m_indexer, m_shooter));
     
     m_chooser.addOption("2pc auto from front", Autos.frontSpeaker2pc(m_drivetrain, m_intake, m_indexer, m_shooter));
     m_chooser.addOption("2pc auto from left", Autos.leftSpeaker2pc(m_drivetrain, m_intake, m_indexer, m_shooter));
