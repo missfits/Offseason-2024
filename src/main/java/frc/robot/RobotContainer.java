@@ -4,16 +4,21 @@
 
 package frc.robot;
 
+import frc.robot.Constants.OperatorConstants;
+
 // import frc.robot.Constants.OperatorConstants;
 
 import frc.robot.commands.Autos;
 import frc.robot.commands.ExampleCommand;
-
+import frc.robot.commands.MoveMotorCommand;
 import frc.robot.subsystems.*;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+
+import edu.wpi.first.wpilibj.XboxController;
+
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -26,12 +31,16 @@ public class RobotContainer {
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private static final OI m_humanControl = new OI();
 
+  private final CommandXboxController m_driverController = new CommandXboxController(0);
+
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
-    m_exampleSubsystem.setDefaultCommand(new ExampleCommand(m_exampleSubsystem));
+    // m_exampleSubsystem.setDefaultCommand(new MoveMotorCommand(m_exampleSubsystem));
     configureBindings();
+    
+
   }
 
   /**
@@ -44,6 +53,7 @@ public class RobotContainer {
    * joysticks}.
    */
   private void configureBindings() {
+    m_exampleSubsystem.setDefaultCommand(new MoveMotorCommand(m_exampleSubsystem, m_humanControl));
   }
 
   /**

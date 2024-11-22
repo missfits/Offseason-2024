@@ -34,7 +34,7 @@ public class ExampleSubsystem extends SubsystemBase {
   @Override
   public void simulationPeriodic() {}
 
-  public void run() {
-    m_motor.set(0.05);
+  public void setPercentPower(double power){
+    m_motor.set(power);
   }
 }

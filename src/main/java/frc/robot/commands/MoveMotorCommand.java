@@ -7,14 +7,18 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.ExampleSubsystem;
 
+import frc.robot.OI;
+
 /** An example command that uses an example subsystem. */
-public class ExampleCommand extends Command {
+public class MoveMotorCommand extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final ExampleSubsystem m_subsystem;
+  private final OI m_humanControl;
 
 
-  public ExampleCommand(ExampleSubsystem subsystem) {
+  public MoveMotorCommand(ExampleSubsystem subsystem, OI humanControl) {
     m_subsystem = subsystem;
+    m_humanControl = humanControl;
     addRequirements(subsystem);
   }
 
@@ -22,7 +26,13 @@ public class ExampleCommand extends Command {
   public void initialize() {}
 
   @Override
-  public void execute() {}
+  /**
+   * joystick input translates to percent power in MoveMotorCommand
+   */
+  public void execute() {
+    double xJoy = m_humanControl.getDriverXBoxLeftJoyX();
+    m_subsystem.setPercentPower(xJoy);
+  }
 
   @Override
   public void end(boolean interrupted) {}
