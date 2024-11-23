@@ -22,46 +22,11 @@ public final class Constants {
     public static final double DRIVE_SPEED_ADJUSTMENT = 0.8;
   }
 
-  public static class DrivetrainConstants {
-    public static final int LEFT_MOTOR_1_PORT = 1; // TO DO: update
-    public static final int LEFT_MOTOR_2_PORT = 2; // TO DO: update
-    public static final int RIGHT_MOTOR_1_PORT = 3; // ^^
-    public static final int RIGHT_MOTOR_2_PORT = 4; // ^^
+  public static class SubsystemConstants {
+    public static final int COUNTS_PER_REV = 42; // maybe right? from offseason-2024
 
-    public static final int COUNTS_PER_REV = 42;
-  }
-
-  public static class IntakeConstants {
-
-    // CONSTANTS FROM OFFSEASON; may need changing
-
-    public static final int INTAKE_MOTOR_PORT = 6; // TO DO: update
-    public static final int PIVOT_MOTOR_PORT = 8; // TO DO: update
-
-    public static final double INTAKE_MOTOR_SPEED_FORWARD = 0.4; // default value 0.6, lower to prevent cubes from breaking
-    public static final double INTAKE_MOTOR_SPEED_BACKWARD = -0.6;
-    public static final double INTAKE_MOTOR_SPEED_DEFAULT = 0.05;
-
-    public static final double PIVOT_MOTOR_SPEED = 0.2;
-
-    public static final int COUNTS_PER_REV = 42;
-
-    public static final double PIVOT_DELTA = 8; // for if we want to run a relative encoder thing
-
-    // for if we want to fix encoder values for up and down (these are untested!)
-    public static final double PIVOT_DOWN_POSITION = 8.5;
-    public static final double PIVOT_UP_POSITION = 0.5;
-
-  }
-
-  public static class ClimberConstants {
-    public static final int CLIMBER_MOTOR_PORT = 100; // TO DO: set ID val
-
-    public static final int COUNTS_PER_REV = 42;
-  }
-
-  public static class AutoConstants {
-    public static final double TAXI_AUTO_TARGET_DISTANCE = 25; // (temp) distance (in rotations of encoder) to travel (can be both neg + pos)
-    public static final double TAXI_AUTO_SPEED = 0.25; // (temp) speed of robot during taxi auto 
+    // for 2024 elevator
+    // 0.947 (sprocket radius) * 2 pi * 2 (carriage to chain movement) * m/in * 5.45 (gear ratio)
+    public static final double METERS_PER_ROTATION = 1.64736586187; // tentative, should reevaluate
   }
 }
